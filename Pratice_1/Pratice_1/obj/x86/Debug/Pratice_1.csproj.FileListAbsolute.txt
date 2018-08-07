@@ -1,0 +1,6 @@
+/Users/linjiajun/Git_Repository/Csharp_pratice/Pratice_1/Pratice_1/bin/Debug/Pratice_1.exe
+/Users/linjiajun/Git_Repository/Csharp_pratice/Pratice_1/Pratice_1/bin/Debug/Pratice_1.pdb
+/Users/linjiajun/Git_Repository/Csharp_pratice/Pratice_1/Pratice_1/obj/x86/Debug/Pratice_1.csprojResolveAssemblyReference.cache
+/Users/linjiajun/Git_Repository/Csharp_pratice/Pratice_1/Pratice_1/obj/x86/Debug/Pratice_1.csproj.CoreCompileInputs.cache
+/Users/linjiajun/Git_Repository/Csharp_pratice/Pratice_1/Pratice_1/obj/x86/Debug/Pratice_1.exe
+/Users/linjiajun/Git_Repository/Csharp_pratice/Pratice_1/Pratice_1/obj/x86/Debug/Pratice_1.pdb
