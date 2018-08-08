@@ -41,7 +41,7 @@ namespace Pratice_1
             string a=Console.ReadLine();
             Console.WriteLine(a.Substring(1,2).Equals("HP")?a.Remove(1,2):"flase");
             */
-            /*//pratice_6
+            //pratice_6
             Console.WriteLine("输入第一个整数：");
             int a=Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("输入第二个整数：");
@@ -50,7 +50,7 @@ namespace Pratice_1
             int c = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("最大:"+Math.Max(Math.Max(a,b),c));
             Console.WriteLine("最小:"+Math.Min(Math.Min(a, b), c));
-            */
+
         }
     }
 }
