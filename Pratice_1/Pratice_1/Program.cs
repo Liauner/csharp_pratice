@@ -18,7 +18,7 @@ namespace Pratice_1
                 d++;
             }
             */
-            //pratice_3
+            /*//pratice_3
             string a=Console.ReadLine();
             int b = System.Convert.ToInt32(a);
             if(b%3==0){
@@ -31,6 +31,26 @@ namespace Pratice_1
                 Console.WriteLine("不是3和7的倍数");
 
             }
+            */
+            /*//pratice_4
+            string a=Console.ReadLine();
+            string[] b = a.Split(' ');
+            Console.WriteLine(b[0]=="Hello");
+            */
+            /*//pratice_5
+            string a=Console.ReadLine();
+            Console.WriteLine(a.Substring(1,2).Equals("HP")?a.Remove(1,2):"flase");
+            */
+            //pratice_6
+            Console.WriteLine("输入第一个整数：");
+            int a=Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("输入第二个整数：");
+            int b = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("输入第三个整数：");
+            int c = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("最大:"+Math.Max(Math.Max(a,b),c));
+            Console.WriteLine("最小:"+Math.Min(Math.Min(a, b), c));
+
         }
     }
 }
