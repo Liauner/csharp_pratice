@@ -100,7 +100,7 @@ namespace Pratice_1
          //pratice_13
             int[] a = { 1, 2, 8 };
             int[] f =new int[3] ;
-            for (int c = a.Length - 1; c < 0; c--)
+            for (int c = a.Length - 1; c >=0; c--)
             {
                 if(c-1<0){
                     f[a.Length - 1] = a[0];
