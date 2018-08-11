@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 
 namespace Pratice_1
 {
@@ -97,7 +98,7 @@ namespace Pratice_1
             int[] b = { 1, 2, 2, 3,3, 4, 5, 6, 5, 7, 7, 7, 8, 8, 5 }; 
             Console.WriteLine(a[0]==b[0]||a[a.Length-1]==b[b.Length-1]);
         */
-         //pratice_13
+         /*//pratice_13
             int[] a = { 1, 2, 8 };
             int[] f =new int[3] ;
             for (int c = a.Length - 1; c >=0; c--)
@@ -111,8 +112,49 @@ namespace Pratice_1
             foreach(int e in f){
                 Console.WriteLine(e);
             }
-
-
+        */
+         /*//pratice_14
+            int[] a = { 1, 2, 5 };
+            int[] b = { 0,3,8}; 
+            int[] c = { -1,0,2 }; 
+            Console.WriteLine($"[{a[1]},{b[1]},{c[1]}]");
+            */
+         /*//pratice_15
+            int[] a = { 2, 4, 7, 8, 6 };
+            bool c = false;
+            foreach(int b in a){
+                if (b % 2 != 0)
+                {
+                    c = true;
+                }
+            }
+                Console.WriteLine(c ? "有奇数":"无奇数");
+            */
+            /*//pratice_16
+             Console.WriteLine("输入字符串：");
+            bool b = true;
+            string a=Console.ReadLine();
+            for (int i = 0; i<a.Length/2;i++){
+                if (a[i] == a[a.Length - 1 - i])
+                    continue;
+                else
+                    b = false;
+            }
+            Console.WriteLine(b?"是回文":"不是回文");
+            */
+            //pratice_16改
+            string StringReverse(string str)
+            {
+                StringBuilder builder = new StringBuilder(str);
+                for (int i = 0, j = str.Length - 1; i <= j;i++,j--){
+                    builder[i] = str[j];
+                    builder[j] = str[i];
+                }
+                return builder.ToString();
+            } 
+            Console.WriteLine("输入字符串：");
+            string s=Console.ReadLine();
+            Console.WriteLine(StringReverse(s).Equals(s)?"是回文":"不是回文");
         }
     }
 }
