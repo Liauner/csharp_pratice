@@ -6,6 +6,7 @@ namespace Pratice_1
 {
     class MainClass
     {
+
         public static void Main(string[] args)
         {/*//pratice_1
             string a=Console.ReadLine();
@@ -130,31 +131,63 @@ namespace Pratice_1
             }
                 Console.WriteLine(c ? "有奇数":"无奇数");
             */
-            /*//pratice_16
-             Console.WriteLine("输入字符串：");
-            bool b = true;
-            string a=Console.ReadLine();
-            for (int i = 0; i<a.Length/2;i++){
-                if (a[i] == a[a.Length - 1 - i])
-                    continue;
-                else
-                    b = false;
-            }
-            Console.WriteLine(b?"是回文":"不是回文");
-            */
-            //pratice_16改
-            string StringReverse(string str)
-            {
-                StringBuilder builder = new StringBuilder(str);
-                for (int i = 0, j = str.Length - 1; i <= j;i++,j--){
-                    builder[i] = str[j];
-                    builder[j] = str[i];
-                }
-                return builder.ToString();
-            } 
-            Console.WriteLine("输入字符串：");
-            string s=Console.ReadLine();
-            Console.WriteLine(StringReverse(s).Equals(s)?"是回文":"不是回文");
+         /*//pratice_16
+          Console.WriteLine("输入字符串：");
+         bool b = true;
+         string a=Console.ReadLine();
+         for (int i = 0; i<a.Length/2;i++){
+             if (a[i] == a[a.Length - 1 - i])
+                 continue;
+             else
+                 b = false;
+         }
+         Console.WriteLine(b?"是回文":"不是回文");
+         */
+         /*//pratice_16改
+         string StringReverse(string str)
+         {
+             StringBuilder builder = new StringBuilder(str);
+             for (int i = 0, j = str.Length - 1; i <= j;i++,j--){
+                 builder[i] = str[j];
+                 builder[j] = str[i];
+             }
+             return builder.ToString();
+         } 
+         Console.WriteLine("输入字符串：");
+         string s=Console.ReadLine();
+         Console.WriteLine(StringReverse(s).Equals(s)?"是回文":"不是回文");
+         */
+         /*//pratice_17 Method 1
+
+          
+
+        int[] c = Maxsum(ar);
+            Console.WriteLine($"[{String.Join(",",c)}]");
+    
         }
+        public static int[] ar = { 0, 5, 1, 7, 20, -1, -8, 10, 12, 40 };
+
+        public static int[] Maxsum(int[] arr)
+        {
+            if (arr.Length < 1)
+            {
+                throw new Exception("数组必须有两个整数以上。");
+            }
+            else
+            {
+                int b = 1;
+                for (int i = 1; i < arr.Length - 1; i++)
+                {
+                    if (arr[b - 1] * arr[b] < arr[i] * arr[i + 1])
+                        b = i + 1;
+                }
+                return new int[] { arr[b - 1], arr[b] };
+            }
+
+        }
+        */
+
+
+        
     }
 }
