@@ -186,8 +186,17 @@ namespace Pratice_1
 
         }
         */
+        /*//pratice_18
+        int[] a = { 1, 16, 12 };
+        Array.Sort(a);
+            int b = 0,c=0;
+        for (int i = 1; i < a.Length;i++){
+                c = a[i] - a[i - 1] - 1;
+                b += c;
+        }
+         Console.WriteLine(b);
+        */
 
-
-        
+        }
     }
 }
