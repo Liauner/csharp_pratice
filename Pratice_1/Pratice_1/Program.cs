@@ -186,17 +186,34 @@ namespace Pratice_1
 
         }
         */
-        /*//pratice_18
-        int[] a = { 1, 16, 12 };
-        Array.Sort(a);
-            int b = 0,c=0;
-        for (int i = 1; i < a.Length;i++){
-                c = a[i] - a[i - 1] - 1;
-                b += c;
+         /*//pratice_18
+         int[] a = { 1, 16, 12 };
+         Array.Sort(a);
+             int b = 0,c=0;
+         for (int i = 1; i < a.Length;i++){
+                 c = a[i] - a[i - 1] - 1;
+                 b += c;
+         }
+          Console.WriteLine(b);
+         */
+        /* //pratice_19
+            int[,] a = {{0, 2, 3, 2},{0, 6,0,1},{4,0,3,0 }};
+            int sum = 0;
+        for (int i = 0; i < a.GetLength(0);i++){
+            for (int j = 0; j < a.GetLength(1);j++){
+                if (i==a.GetLength(0)-1){
+                        sum += a[i, j];
+                        continue;
+                }
+                if(a[i,j]<1){
+                        a[i + 1, j] = 0;
+                        a[i, j] = 0;
+                }
+                    sum += a[i, j];
+            }
         }
-         Console.WriteLine(b);
+        Console.WriteLine(sum);
         */
-
         }
     }
 }
