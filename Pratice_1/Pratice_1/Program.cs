@@ -196,7 +196,7 @@ namespace Pratice_1
          }
           Console.WriteLine(b);
          */
-        /* //pratice_19
+         //pratice_19
             int[,] a = {{0, 2, 3, 2},{0, 6,0,1},{4,0,3,0 }};
             int sum = 0;
         for (int i = 0; i < a.GetLength(0);i++){
@@ -213,7 +213,7 @@ namespace Pratice_1
             }
         }
         Console.WriteLine(sum);
-        */
+
         }
     }
 }
