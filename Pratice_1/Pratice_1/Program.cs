@@ -196,24 +196,43 @@ namespace Pratice_1
          }
           Console.WriteLine(b);
          */
-        /* //pratice_19
-            int[,] a = {{0, 2, 3, 2},{0, 6,0,1},{4,0,3,0 }};
-            int sum = 0;
-        for (int i = 0; i < a.GetLength(0);i++){
-            for (int j = 0; j < a.GetLength(1);j++){
-                if (i==a.GetLength(0)-1){
-                        sum += a[i, j];
+         /* //pratice_19
+             int[,] a = {{0, 2, 3, 2},{0, 6,0,1},{4,0,3,0 }};
+             int sum = 0;
+         for (int i = 0; i < a.GetLength(0);i++){
+             for (int j = 0; j < a.GetLength(1);j++){
+                 if (i==a.GetLength(0)-1){
+                         sum += a[i, j];
+                         continue;
+                 }
+                 if(a[i,j]<1){
+                         a[i + 1, j] = 0;
+                         a[i, j] = 0;
+                 }
+                     sum += a[i, j];
+             }
+         }
+         Console.WriteLine(sum);
+         */
+         /*//pratice_20
+        int[] a = { 4, -1, 6, 3, 12, -8,-5, 5, 0 };
+            int b = 0;
+        for (int i = 0; i < a.Length - 1;i++){
+            for (int j = i + 1; j < a.Length;j++){
+                if (a[i] == -5||a[j]==-5){
                         continue;
                 }
-                if(a[i,j]<1){
-                        a[i + 1, j] = 0;
-                        a[i, j] = 0;
+                else if(a[i]>a[j]){
+                        b = a[i];
+                        a[i] = a[j];
+                        a[j] = b;
                 }
-                    sum += a[i, j];
+                    
             }
         }
-        Console.WriteLine(sum);
+        Console.WriteLine($"[{String.Join(",",a)}]");
         */
-        }
+
+      }
     }
 }
