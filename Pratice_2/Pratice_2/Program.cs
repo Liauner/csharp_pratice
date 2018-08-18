@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Pratice_2
 {
@@ -19,7 +20,9 @@ namespace Pratice_2
             foreach(string b in a){
                 Console.WriteLine($"{b} ");
             }
-            */  
+            */
+
+
         }
     }
 }
