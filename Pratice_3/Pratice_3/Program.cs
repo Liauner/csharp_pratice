@@ -11,7 +11,7 @@ namespace Pratice_3
             /*//Pratice_11 and 12
             Console.WriteLine($"[{string.Join(",", OrderArray(5, 0))}]"); 
             */
-            //Pratice_14
+            /*//Pratice_14
 
             Console.WriteLine("请输入数组大小：");
             int length=Convert.ToInt32(Console.ReadLine())+1;
@@ -41,7 +41,40 @@ namespace Pratice_3
                 }
             }
             Console.WriteLine($"[{string.Join(",",a)}]");
+            */
+            /*//Pratice_16 and 17
+            int length;
+            Console.WriteLine("输入数组大小:");
+            length = Convert.ToInt32(Console.ReadLine());
+            while(true){
+                if (length < 2)
+                {
+                    Console.WriteLine("数组大小必须大于2");
+                    length = Convert.ToInt32(Console.ReadLine());
+                }
+                else { break; }
+            };
+            int[] a = new int[length];
+            for (int i=0; i < a.Length;i++){
+                Console.WriteLine($"输入第{i+1}个整数：");
+                a[i]=Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine($"第二个最大数为{SecondMax(a)}");
+            */
+            /*//Pratice_7
+            int[] a = { 1,2,3,4,5};
+            int[] b = { 10,9,8,7};
+            int[] c = new int[a.Length + b.Length];
+            a.CopyTo(c, 0);
+            b.CopyTo(c, a.Length);
+            Console.WriteLine($"{string.Join(",",c.OrderBy(x=>x).ToArray())}");
+            */
+        }
 
+        //P_16 and 17
+        public static int SecondMax(int[] ar){
+            int[] arr= ar.OrderBy(x => x).ToArray();
+            return arr[ar.Length - 2];
         }
 
         public static int[] OrderArray(int length,int order){
