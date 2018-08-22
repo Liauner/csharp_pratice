@@ -23,23 +23,23 @@ namespace Pratice_4
 
         public static int[] Shellsort(int[] array)
         {
-            int num=0, l=0, m = 0;
+            int  l=0, m = 0;
             l = array.Length;
-            for (int i = l / 2; i >= 1;)
+            for (int i = l / 2; i > 1;)
             {
                 for (int j = i; j < l; j++)
                 {
-                    m = i;
-                    for (int z = j;z<i-1 ; )
+                    m = j;
+                    for (int z = m; ; )
                     {
-                        if (array[z] < array[z-i])
-                        {
-                            num = array[z];
-                            array[z-i] = array[z];
-                            array[z] = num;
-
+                        if(z>i-1&&array[z-i]>=array[m]){
+                            array[z] = array[z - i];
+                            z -= i;
                         }
-                        z -= i;
+                        else{
+                            array[z] = array[m];
+                            break;
+                        }
 
                     }
                 }
