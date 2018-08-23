@@ -17,7 +17,7 @@ namespace Pratice_4
                  a[i] = Convert.ToInt32(Console.ReadLine());
              }
              */
-            int[] a ={13,14,94,33,82,25,59,94,65,23,45,27,73,25,39,10};
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9, };//{13,14,94,33,82,25,59,94,65,23,45,27,73,25,39,10};
             Console.WriteLine($"排序后:[{string.Join(",", Shellsort(a))}]");
         }
 
@@ -25,19 +25,19 @@ namespace Pratice_4
         {
             int  l=0, m = 0;
             l = array.Length;
-            for (int i = l / 2; i > 1;)
+            for (int i = l / 2; i >= 1;)
             {
                 for (int j = i; j < l; j++)
                 {
-                    m = j;
-                    for (int z = m; ; )
+                    m = array[j];
+                    for (int z = j; ; )
                     {
-                        if(z>i-1&&array[z-i]>=array[m]){
+                        if(z>i-1&&array[z-i]>=m){
                             array[z] = array[z - i];
                             z -= i;
                         }
                         else{
-                            array[z] = array[m];
+                            array[z] = m;
                             break;
                         }
 
