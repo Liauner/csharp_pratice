@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Pratice_4
 {
@@ -18,13 +19,23 @@ namespace Pratice_4
              }
              */
             /* 解决
-             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9, };//{13,14,94,33,82,25,59,94,65,23,45,27,73,25,39,10};
+             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9};//{13,14,94,33,82,25,59,94,65,23,45,27,73,25,39,10};
             Console.WriteLine($"排序后:[{string.Join(",", Shellsort(a))}]");
             */
             /*//Pratice2 猴子排序
-            int[] a ={ 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9, };
+            int[] a ={ 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
             Bogosort(a);
             */
+            /*//Pratice3 冒泡排序
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9};
+            int[] b = a.OrderBy(x => x).ToArray();
+            Console.WriteLine($"[{string.Join(",",b)}]");
+            BubbleSort2(b);
+            */
+            //Pratice3(额外) 插入排序
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
+            InsertionSort(a);
+
         }
         //希尔排序
         public static int[] Shellsort(int[] array)
@@ -55,6 +66,7 @@ namespace Pratice_4
             return array;
         }
 
+        //猴子排序
         public static void Bogosort(int[] a){
             int sum = 0;
             while (!isOrder(shuffle(a))){
@@ -82,6 +94,70 @@ namespace Pratice_4
             }
             Console.WriteLine($"[{string.Join(",",array)}]");
             return array;
+        }
+
+        //冒泡排序 
+        public  static void BubbleSort(int[] array){
+            int len = array.Length-1;
+            int temp,sum=0;
+            for (int i = len; i > 0;i--){
+                for (int j = 1; j <= i;j++){
+                    temp = array[j];
+                    sum++;
+                    if(array[j-1]>=array[j]){
+                        array[j] = array[j - 1];
+                        array[j - 1] = temp;
+                    }
+                }
+            }
+            Console.WriteLine(sum);
+            Console.WriteLine($"[{string.Join(",",array)}]");
+        }
+        //冒泡改良，最优可为O(n)，关键在于swapped
+        public static void BubbleSort2(int[] intArray)
+        {
+            int temp = 0;
+            bool swapped;
+            int sum = 0;
+            for (int i = 0; i < intArray.Length; i++)
+            {
+                swapped = false;
+                for (int j = 0; j < intArray.Length - 1 - i; j++)
+                {
+                    sum++;
+                    if (intArray[j] > intArray[j + 1])
+                    {
+                        temp = intArray[j];
+                        intArray[j] = intArray[j + 1];
+                        intArray[j + 1] = temp;
+                        if (!swapped)
+                            swapped = true;
+                    }
+                    if (!swapped)
+                        return;
+                }
+            }
+            Console.WriteLine(sum);
+
+        }
+
+        //插入排序
+        public static void InsertionSort(int[] array)
+        {
+            int len = array.Length;
+            int temp, i, j;
+            for (i = 1; i < len; i++)
+            {
+                temp = array[i];
+                j = i;
+                while (j >= 1 && array[j - 1] > temp)
+                {
+                    array[j] = array[j - 1];
+                    j--;
+                }
+                array[j] = temp;
+            }
+            Console.WriteLine($"[{string.Join(",",array)}]");
         }
     }
 }
