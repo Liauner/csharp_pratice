@@ -32,12 +32,16 @@ namespace Pratice_4
             Console.WriteLine($"[{string.Join(",",b)}]");
             BubbleSort2(b);
             */
-            //Pratice3(额外) 插入排序
+            /*//Pratice3(额外) 插入排序
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
             InsertionSort(a);
-
+            */
+            /*//Pratice4 计数排序
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 ,0,9};
+            CountingSort(a);
+            */
         }
-        //希尔排序
+        #region 希尔排序
         public static int[] Shellsort(int[] array)
         {
             int  l=0, m = 0;
@@ -65,8 +69,9 @@ namespace Pratice_4
             Console.WriteLine(m);
             return array;
         }
+        #endregion
 
-        //猴子排序
+        #region 猴子排序
         public static void Bogosort(int[] a){
             int sum = 0;
             while (!isOrder(shuffle(a))){
@@ -95,8 +100,9 @@ namespace Pratice_4
             Console.WriteLine($"[{string.Join(",",array)}]");
             return array;
         }
+        #endregion
 
-        //冒泡排序 
+        #region 冒泡排序 
         public  static void BubbleSort(int[] array){
             int len = array.Length-1;
             int temp,sum=0;
@@ -140,8 +146,9 @@ namespace Pratice_4
             Console.WriteLine(sum);
 
         }
+        #endregion
 
-        //插入排序
+        #region 插入排序
         public static void InsertionSort(int[] array)
         {
             int len = array.Length;
@@ -159,5 +166,32 @@ namespace Pratice_4
             }
             Console.WriteLine($"[{string.Join(",",array)}]");
         }
+        #endregion
+
+        #region 计数排序
+        public static void CountingSort(int[] array){
+            int len = array.Length;
+            int k = 100;
+            int[] Newarray=new int[len],  Count =new int[k];
+            int CountIndex;
+            for (int i = 0; i < len;i++){
+                CountIndex = array[i];
+                Count[CountIndex]++;
+            }
+            for (int j = 1; j < k;j++){
+                Count[j]=Count[j]+Count[j-1];
+                
+            }
+            for (int z = len - 1; z >= 0;z--){
+                CountIndex = array[z];
+                Newarray[Count[CountIndex] - 1] = CountIndex;
+                Count[CountIndex] -= 1;
+            }
+            Console.WriteLine($"[{string.Join(",",Newarray)}]");
+        }
+
+
+
+        #endregion
     }
 }
