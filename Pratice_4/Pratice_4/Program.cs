@@ -40,24 +40,31 @@ namespace Pratice_4
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 ,0,9};
             CountingSort(a);
             */
+            //P5 堆排序
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9, 0, 9 };
+            new Heapsort(a).sort();
+            Console.WriteLine($"[{string.Join(",",a)}]");
+
         }
         #region 希尔排序
         public static int[] Shellsort(int[] array)
         {
-            int  l=0, m = 0;
+            int l = 0, m = 0;
             l = array.Length;
             for (int i = l / 2; i >= 1;)
             {
                 for (int j = i; j < l; j++)
                 {
                     m = array[j];
-                    for (int z = j; ; )
+                    for (int z = j; ;)
                     {
-                        if(z>i-1&&array[z-i]>=m){
+                        if (z > i - 1 && array[z - i] >= m)
+                        {
                             array[z] = array[z - i];
                             z -= i;
                         }
-                        else{
+                        else
+                        {
                             array[z] = m;
                             break;
                         }
@@ -72,52 +79,62 @@ namespace Pratice_4
         #endregion
 
         #region 猴子排序
-        public static void Bogosort(int[] a){
+        public static void Bogosort(int[] a)
+        {
             int sum = 0;
-            while (!isOrder(shuffle(a))){
+            while (!isOrder(shuffle(a)))
+            {
                 shuffle(a);
                 sum++;
-            } 
+            }
             Console.WriteLine(sum);
         }
 
-        public static Boolean isOrder(int[] array){
-            for (int i = 1; i < array.Length;i++){
+        public static Boolean isOrder(int[] array)
+        {
+            for (int i = 1; i < array.Length; i++)
+            {
                 if (array[i - 1] >= array[i])
                     return false;
             }
             return true;
         }
 
-        public static int[] shuffle(int[] array){
+        public static int[] shuffle(int[] array)
+        {
             Random random = new Random();
-            for (int i = 0; i < array.Length;i++){
+            for (int i = 0; i < array.Length; i++)
+            {
                 int swap = random.Next(array.Length);
                 int temp = array[i];
                 array[i] = array[swap];
                 array[swap] = temp;
             }
-            Console.WriteLine($"[{string.Join(",",array)}]");
+            Console.WriteLine($"[{string.Join(",", array)}]");
             return array;
         }
         #endregion
 
         #region 冒泡排序 
-        public  static void BubbleSort(int[] array){
-            int len = array.Length-1;
-            int temp,sum=0;
-            for (int i = len; i > 0;i--){
-                for (int j = 1; j <= i;j++){
+        public static void BubbleSort(int[] array)
+        {
+            int len = array.Length - 1;
+            int temp, sum = 0;
+            for (int i = len; i > 0; i--)
+            {
+                for (int j = 1; j <= i; j++)
+                {
                     temp = array[j];
                     sum++;
-                    if(array[j-1]>=array[j]){
+                    if (array[j - 1] >= array[j])
+                    {
                         array[j] = array[j - 1];
                         array[j - 1] = temp;
                     }
                 }
             }
             Console.WriteLine(sum);
-            Console.WriteLine($"[{string.Join(",",array)}]");
+            Console.WriteLine($"[{string.Join(",", array)}]");
         }
         //冒泡改良，最优可为O(n)，关键在于swapped
         public static void BubbleSort2(int[] intArray)
@@ -164,34 +181,83 @@ namespace Pratice_4
                 }
                 array[j] = temp;
             }
-            Console.WriteLine($"[{string.Join(",",array)}]");
+            Console.WriteLine($"[{string.Join(",", array)}]");
         }
         #endregion
 
         #region 计数排序
-        public static void CountingSort(int[] array){
+        public static void CountingSort(int[] array)
+        {
             int len = array.Length;
             int k = 100;
-            int[] Newarray=new int[len],  Count =new int[k];
+            int[] Newarray = new int[len], Count = new int[k];
             int CountIndex;
-            for (int i = 0; i < len;i++){
+            for (int i = 0; i < len; i++)
+            {
                 CountIndex = array[i];
                 Count[CountIndex]++;
             }
-            for (int j = 1; j < k;j++){
-                Count[j]=Count[j]+Count[j-1];
-                
+            for (int j = 1; j < k; j++)
+            {
+                Count[j] = Count[j] + Count[j - 1];
+
             }
-            for (int z = len - 1; z >= 0;z--){
+            for (int z = len - 1; z >= 0; z--)
+            {
                 CountIndex = array[z];
                 Newarray[Count[CountIndex] - 1] = CountIndex;
                 Count[CountIndex] -= 1;
             }
-            Console.WriteLine($"[{string.Join(",",Newarray)}]");
+            Console.WriteLine($"[{string.Join(",", Newarray)}]");
         }
 
 
 
+        #endregion
+
+        #region 堆排序
+        class Heapsort
+        {
+            private int[] arr;
+
+            public Heapsort(int[] array)
+            {
+                arr = array;
+            }
+            private void swap(int a, int b)
+            {
+                int temp = arr[a];
+                arr[a] = arr[b];
+                arr[b] = temp;
+            }
+            private void maxHeapify(int index, int len)
+            {
+                int li = index * 2 + 1;
+                int ri = li + 1;
+                int cmax = li;
+                if (li > len) return;
+                if (ri <= len && arr[ri] > arr[li])
+                    cmax = ri;
+                if (arr[cmax] > arr[index])
+                {
+                    swap(index, cmax);
+                    maxHeapify(cmax, len);
+                }
+            }
+            public  void sort(){
+                int len = arr.Length - 1;
+                int BeginIndex = len / 2-1;
+                for (int i = BeginIndex; i >= 0;i--){
+                    maxHeapify(i, len);
+                }
+
+                for (int j = len; j > 0;j--){
+                    swap(0, j);
+                    maxHeapify(0, j-1);
+                }
+
+            }
+        }
         #endregion
     }
 }
