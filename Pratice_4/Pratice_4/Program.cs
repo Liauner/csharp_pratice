@@ -40,11 +40,14 @@ namespace Pratice_4
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 ,0,9};
             CountingSort(a);
             */
-            //P5 堆排序
+            /*//P5 堆排序
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9, 0, 9 };
             new Heapsort(a).sort();
             Console.WriteLine($"[{string.Join(",",a)}]");
-
+            */
+            //P6归并排序
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
+            Mergesort(a);
         }
         #region 希尔排序
         public static int[] Shellsort(int[] array)
@@ -156,9 +159,10 @@ namespace Pratice_4
                         if (!swapped)
                             swapped = true;
                     }
-                    if (!swapped)
-                        return;
+
                 }
+                if (!swapped)
+                    return;
             }
             Console.WriteLine(sum);
 
@@ -244,19 +248,52 @@ namespace Pratice_4
                     maxHeapify(cmax, len);
                 }
             }
-            public  void sort(){
+            public void sort()
+            {
                 int len = arr.Length - 1;
-                int BeginIndex = len / 2-1;
-                for (int i = BeginIndex; i >= 0;i--){
+                int BeginIndex = len / 2 - 1;
+                for (int i = BeginIndex; i >= 0; i--)
+                {
                     maxHeapify(i, len);
                 }
 
-                for (int j = len; j > 0;j--){
+                for (int j = len; j > 0; j--)
+                {
                     swap(0, j);
-                    maxHeapify(0, j-1);
+                    maxHeapify(0, j - 1);
                 }
 
             }
+        }
+        #endregion
+        #region 归并排序
+        public static void Mergesort(int[] array)
+        {
+            int len = array.Length;
+            int[] result = new int[len];
+            int start, block;
+            for (block = 1; block < len; block *= 2)
+            {
+                for (start = 0; start < len; start += 2 * block)
+                {
+                    int low = start;
+                    int mid = (start + block) < len ? start + block : len;
+                    int high = (start +2* block) < len ? start +2* block : len;
+                    //
+                    int start1 = low, end1 = mid;
+                    int start2 = mid, end2 = high;
+                    while (start1 < end1 && start2 < end2)
+                        result[low++] = array[start1] < array[start2] ? array[start1++] : array[start2++];
+                    while (start1 < end1)
+                        result[low++] = array[start1++];
+                    while (start2 < end2)
+                        result[low++] = array[start2++];
+                }
+                int[] temp = array;
+                array = result;
+                result = temp;
+            }
+            Console.WriteLine($"[{string.Join(",",array)}]");
         }
         #endregion
     }
