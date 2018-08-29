@@ -45,9 +45,14 @@ namespace Pratice_4
             new Heapsort(a).sort();
             Console.WriteLine($"[{string.Join(",",a)}]");
             */
-            //P6归并排序
+            /*//P6归并排序
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
             Mergesort(a);
+            */
+            //P7 Permutation排序 枚举全部实现排序的可能.难度稍大，比较难理解
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
+            int[] b={1,2,3,4};
+            Permutationsort(b, 0);
         }
         #region 希尔排序
         public static int[] Shellsort(int[] array)
@@ -278,7 +283,7 @@ namespace Pratice_4
                 {
                     int low = start;
                     int mid = (start + block) < len ? start + block : len;
-                    int high = (start +2* block) < len ? start +2* block : len;
+                    int high = (start + 2 * block) < len ? start + 2 * block : len;
                     //
                     int start1 = low, end1 = mid;
                     int start2 = mid, end2 = high;
@@ -293,7 +298,44 @@ namespace Pratice_4
                 array = result;
                 result = temp;
             }
-            Console.WriteLine($"[{string.Join(",",array)}]");
+            Console.WriteLine($"[{string.Join(",", array)}]");
+        }
+        #endregion
+
+        #region Permutation排序
+        public static void Permutationsort(int[] array,int start){
+
+            if (start == array.Length-1)
+            {
+                Console.WriteLine($"[{string.Join(",", array)}]");
+
+            }
+            for (int i = start; i < array.Length;++i){
+                
+                    Permutation_swap(array, i, start);
+                    Permutationsort(array, start + 1);
+                    Permutation_swap(array, i, start);
+
+                
+
+            }
+
+        }
+
+        public static void Permutation_swap(int[] array,int i,int j){
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+
+        public static bool issort(int[] array)
+        {
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] < array[i - 1])
+                    return false;
+            }
+            return true;
         }
         #endregion
     }
