@@ -49,10 +49,14 @@ namespace Pratice_4
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
             Mergesort(a);
             */
-            //P7 Permutation排序 枚举全部实现排序的可能.难度稍大，比较难理解
+            /*//P7 Permutation排序 枚举全部实现排序的可能.难度稍大，比较难理解
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
             int[] b={1,2,3,4};
             Permutationsort(b, 0);
+            */
+            //P8 Quicksort 快速排序
+            int[] a = { 55, 1, 4, 32, 11, 39, 42, 64, 53, 70, 12, 9 };
+            Quicksort(a);
         }
         #region 希尔排序
         public static int[] Shellsort(int[] array)
@@ -303,32 +307,87 @@ namespace Pratice_4
         #endregion
 
         #region Permutation排序
-        public static void Permutationsort(int[] array,int start){
+        public static void Permutationsort(int[] array, int start)
+        {
 
-            if (start == array.Length-1)
+            if (start == array.Length - 1)
             {
                 Console.WriteLine($"[{string.Join(",", array)}]");
 
             }
-            for (int i = start; i < array.Length;++i){
-                
-                    Permutation_swap(array, i, start);
-                    Permutationsort(array, start + 1);
-                    Permutation_swap(array, i, start);
+            for (int i = start; i < array.Length; ++i)
+            {
 
-                
+                Permutation_swap(array, i, start);
+                Permutationsort(array, start + 1);
+                Permutation_swap(array, i, start);
+
+
 
             }
 
         }
 
-        public static void Permutation_swap(int[] array,int i,int j){
+        public static void Permutation_swap(int[] array, int i, int j)
+        {
             int temp = array[i];
             array[i] = array[j];
             array[j] = temp;
         }
 
         public static bool issort(int[] array)
+        {
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] < array[i - 1])
+                    return false;
+            }
+            return true;
+        }
+        #endregion
+
+        #region 快速排序
+        public static void Quicksort(int[] array){
+            Quicksort(array, 0, array.Length-1);
+            
+        }
+
+        public static void Quicksort(int[] array, int left, int right)
+        {
+            if (left < right)
+            {
+                int mid = array[(left + right) / 2];
+                int i = left - 1;
+                int j = right + 1;
+                while(true){
+                    while (array[++i] < mid) ;
+
+                    while (array[--j] > mid) ;
+
+                    if(i>=j){
+                        break;
+                    }
+                    Qswap(array,i, j);
+                }
+                Quicksort(array, left, i-1);
+                Quicksort(array, j+1, right);
+            }
+            if(Qissort(array)){
+                Console.WriteLine($"[{string.Join(",",array)}]");
+            }
+
+        }
+
+        public static void Qswap(int[] array,int a,int b){
+            int t = array[a];
+            array[a] = array[b];
+            array[b] = t;
+            /*int t = a; //理念不清，如果这么写的话，传进来的是数值，而不是引用对象，所以无论这里怎么变，都不会改变原数组的变化。！！！！
+            a = b;
+            b = t;*/
+        }
+
+        public static bool Qissort(int[] array)
         {
             for (int i = 1; i < array.Length; i++)
             {
