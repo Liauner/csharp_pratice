@@ -54,9 +54,14 @@ namespace Pratice_4
             int[] b={1,2,3,4};
             Permutationsort(b, 0);
             */
-            //P8 Quicksort 快速排序
-            int[] a = { 55, 1, 4, 32, 11, 39, 42, 64, 53, 70, 12, 9 };
+            /*//P8 Quicksort 快速排序
+            int[] a = { 55, 1, 4, 90, 2, 42, 64 };
             Quicksort(a);
+            */
+            //P9 Radix排序(基数排序)
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
+            Radixsort(a);
+
         }
         #region 希尔排序
         public static int[] Shellsort(int[] array)
@@ -347,9 +352,10 @@ namespace Pratice_4
         #endregion
 
         #region 快速排序
-        public static void Quicksort(int[] array){
-            Quicksort(array, 0, array.Length-1);
-            
+        public static void Quicksort(int[] array)
+        {
+            Quicksort(array, 0, array.Length - 1);
+
         }
 
         public static void Quicksort(int[] array, int left, int right)
@@ -359,26 +365,30 @@ namespace Pratice_4
                 int mid = array[(left + right) / 2];
                 int i = left - 1;
                 int j = right + 1;
-                while(true){
+                while (true)
+                {
                     while (array[++i] < mid) ;
 
                     while (array[--j] > mid) ;
 
-                    if(i>=j){
+                    if (i >= j)
+                    {
                         break;
                     }
-                    Qswap(array,i, j);
+                    Qswap(array, i, j);
                 }
-                Quicksort(array, left, i-1);
-                Quicksort(array, j+1, right);
+                Quicksort(array, left, i - 1);
+                Quicksort(array, j + 1, right);
             }
-            if(Qissort(array)){
-                Console.WriteLine($"[{string.Join(",",array)}]");
+            if (Qissort(array))
+            {
+                Console.WriteLine($"[{string.Join(",", array)}]");
             }
 
         }
 
-        public static void Qswap(int[] array,int a,int b){
+        public static void Qswap(int[] array, int a, int b)
+        {
             int t = array[a];
             array[a] = array[b];
             array[b] = t;
@@ -395,6 +405,51 @@ namespace Pratice_4
                     return false;
             }
             return true;
+        }
+        #endregion
+
+        #region Radix排序
+        public static void Radixsort(int[] array){
+            int max = maxone(array);
+            for (int exp = 1; max / exp > 0;exp*=10){
+                count_sort(array, exp);
+            }
+            Console.WriteLine($"[{string.Join(",",array)}]");
+        }
+
+        public static int maxone(int[] array){
+            int len = array.Length ;
+            int max=array[0];
+            for (int i = 1; i < len;i++){
+                if(array[i]>max){
+                    max = array[i];
+                }
+            }
+            return max;
+
+        }
+
+        public static void count_sort(int[] array,int exp){
+            int len = array.Length;
+            int[] output=new int[len];
+            int[] buckets =new int[10];
+            for (int i = 0; i < len;i++){
+                buckets[(array[i] / exp) % 10]++;
+            }
+
+            for (int i = 1; i < 10;i++){
+                buckets[i] += buckets[i - 1];
+            }
+
+            for (int i = len-1; i >= 0;i--){
+                output[buckets[(array[i] / exp) % 10]- 1] = array[i];
+                buckets[(array[i] / exp) % 10]--;
+            }
+
+            for (int i = 0; i < len;i++){
+                array[i] = output[i];
+            }
+
         }
         #endregion
     }
