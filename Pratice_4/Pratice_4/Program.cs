@@ -58,9 +58,13 @@ namespace Pratice_4
             int[] a = { 55, 1, 4, 90, 2, 42, 64 };
             Quicksort(a);
             */
-            //P9 Radix排序(基数排序)
+            /*//P9 Radix排序(基数排序)  https://www.cnblogs.com/skywang12345/p/3603669.html
             int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
             Radixsort(a);
+            */
+            //P10Selection排序(选择排序) https://bbs.csdn.net/topics/250021950
+            int[] a = { 55, 94, 87, 1, 4, 32, 11, 77, 39, 42, 64, 53, 70, 12, 9 };
+            Selectionsort(a);
 
         }
         #region 希尔排序
@@ -409,19 +413,24 @@ namespace Pratice_4
         #endregion
 
         #region Radix排序
-        public static void Radixsort(int[] array){
+        public static void Radixsort(int[] array)
+        {
             int max = maxone(array);
-            for (int exp = 1; max / exp > 0;exp*=10){
+            for (int exp = 1; max / exp > 0; exp *= 10)
+            {
                 count_sort(array, exp);
             }
-            Console.WriteLine($"[{string.Join(",",array)}]");
+            Console.WriteLine($"[{string.Join(",", array)}]");
         }
 
-        public static int maxone(int[] array){
-            int len = array.Length ;
-            int max=array[0];
-            for (int i = 1; i < len;i++){
-                if(array[i]>max){
+        public static int maxone(int[] array)
+        {
+            int len = array.Length;
+            int max = array[0];
+            for (int i = 1; i < len; i++)
+            {
+                if (array[i] > max)
+                {
                     max = array[i];
                 }
             }
@@ -429,27 +438,53 @@ namespace Pratice_4
 
         }
 
-        public static void count_sort(int[] array,int exp){
+        public static void count_sort(int[] array, int exp)
+        {
             int len = array.Length;
-            int[] output=new int[len];
-            int[] buckets =new int[10];
-            for (int i = 0; i < len;i++){
+            int[] output = new int[len];
+            int[] buckets = new int[10];
+            for (int i = 0; i < len; i++)
+            {
                 buckets[(array[i] / exp) % 10]++;
             }
 
-            for (int i = 1; i < 10;i++){
+            for (int i = 1; i < 10; i++)
+            {
                 buckets[i] += buckets[i - 1];
             }
 
-            for (int i = len-1; i >= 0;i--){
-                output[buckets[(array[i] / exp) % 10]- 1] = array[i];
+            for (int i = len - 1; i >= 0; i--)
+            {
+                output[buckets[(array[i] / exp) % 10] - 1] = array[i];
                 buckets[(array[i] / exp) % 10]--;
             }
 
-            for (int i = 0; i < len;i++){
+            for (int i = 0; i < len; i++)
+            {
                 array[i] = output[i];
             }
 
+        }
+        #endregion
+        #region Selection排序(选择排序)
+        public static void Selectionsort(int[] array){
+            int len = array.Length;
+            int max;
+            for (int i = len-1; i > 1;i--){
+                max = i;
+                for (int j = i - 1; j >= 0;j--){
+                    if (array[j] > array[max])
+                        max = j;
+                }
+                Sswap(array, i, max);
+            }
+            Console.WriteLine($"[{string.Join(",",array)}]");
+        }
+
+        public static void Sswap(int[] array,int i,int j){
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
         }
         #endregion
     }
