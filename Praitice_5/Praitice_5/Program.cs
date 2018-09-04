@@ -21,7 +21,7 @@ namespace Praitice_5
             Console.WriteLine($"字符串长度为:{len}");
 
 
-            //P3Write a program in C# Sharp to separate the individual characters from a string. 
+            //P3.Write a program in C# Sharp to separate the individual characters from a string. 
             Console.WriteLine("输入字符串:");
             Array str = Console.ReadLine().ToCharArray();
             foreach (char s in str)
@@ -36,6 +36,19 @@ namespace Praitice_5
                 Console.Write(s + " ");
             }
             */
+
+            //P4.Write a program in C# Sharp to count a total number of vowel or consonant in a string.
+            Console.WriteLine("输入字符串:");
+            string str =Console.ReadLine().ToLower();
+            int yuan=0, fu=0;
+            foreach(char s in str){
+                if (s == 'a' || s == 'e' || s == 'i' || s == 'o' || s == 'u')
+                    yuan++;
+                if (s >= 'a' && s <= 'z')
+                    fu++;
+            }
+            Console.WriteLine($"元音字符有{yuan}个");
+            Console.WriteLine($"辅音字符有{fu}个");
         }
     }
 }
