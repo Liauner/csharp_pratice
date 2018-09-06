@@ -68,7 +68,10 @@ namespace Praitice_5
 
             */
 
-
+            //P7.Write a program in C# Sharp to sort a string array in ascending order. 
+            Console.WriteLine("输入字符串");
+            string a =Console.ReadLine();
+            Console.WriteLine($"{string.Join("",a.OrderBy(c => c)) }");
 
         }
         public static string toSixteen(int ten,string sixten){
