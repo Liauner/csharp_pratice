@@ -66,12 +66,26 @@ namespace Praitice_5
                 break;
             };
 
-            */
+
 
             //P7.Write a program in C# Sharp to sort a string array in ascending order. 
             Console.WriteLine("输入字符串");
             string a =Console.ReadLine();
             Console.WriteLine($"{string.Join("",a.OrderBy(c => c)) }");
+            */
+
+            //P8.Write a program in C# Sharp to extract a substring from a given string without using the library function.
+            Console.WriteLine("输入字符串:");
+            string str= Console.ReadLine();
+            Console.WriteLine("输入开始提取的位置：");
+            int index= Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("输入子字符串的长度：");
+            int len = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(substring(str,index,len));
+
+
+
+
 
         }
         public static string toSixteen(int ten,string sixten){
@@ -96,6 +110,15 @@ namespace Praitice_5
             }else{
                 return Convert.ToChar(('A' + (number - 10))).ToString();
             }
+
+        }
+
+        public static string substring(string str,int index,int len){
+            string newstr = "";
+            for (int i = index - 1; i < index + len - 1;i++){
+                newstr += str[i];
+            }
+            return newstr;
 
         }
     }
