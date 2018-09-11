@@ -72,7 +72,7 @@ namespace Praitice_5
             Console.WriteLine("输入字符串");
             string a =Console.ReadLine();
             Console.WriteLine($"{string.Join("",a.OrderBy(c => c)) }");
-            */
+
 
             //P8.Write a program in C# Sharp to extract a substring from a given string without using the library function.
             Console.WriteLine("输入字符串:");
@@ -82,8 +82,26 @@ namespace Praitice_5
             Console.WriteLine("输入子字符串的长度：");
             int len = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine(substring(str,index,len));
+            */
 
-
+            //P9. Write a program in C# Sharp to read a string through the keyboard and sort it using bubble sort.
+            Console.WriteLine("输入字符串数量");
+            int len=Convert.ToInt32( Console.ReadLine());
+            string[] array_str = new string[len];
+            for (int i = 0; i < len;i++){
+                Console.WriteLine($"输入第{i}个字符串：");
+                array_str[i]=Console.ReadLine();
+            }
+            for (int i = 0; i < len;i++){
+                for (int j = 0; j < len - 1 - i;j++){
+                    if(string.Compare(array_str[j],array_str[j+1])>0){
+                        string temp = array_str[j];
+                        array_str[j] = array_str[j + 1];
+                        array_str[j + 1] = temp;
+                    }
+                }
+            }
+            Console.WriteLine($"[{string.Join(",",array_str)}]");
 
 
 
@@ -121,5 +139,7 @@ namespace Praitice_5
             return newstr;
 
         }
+
+
     }
 }
